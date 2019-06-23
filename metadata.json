@@ -1,0 +1,1 @@
+{"name": "ProtectMeVPN", "description": "Disable all active connections if enabled and VPN is down.", "uuid": "ProtectMeVPN@TP", "shell-version": ["3.32.1"]}
