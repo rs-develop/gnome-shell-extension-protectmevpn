@@ -1,7 +1,7 @@
-
+#!/usr/bin/gjs
 //----------------------------------------------------------------------------------------
-// Date    : 190623
-// Version : 1.0
+// Date    : 210221
+// Version : 1.1
 // Contact : rsdevelop.contact@gmail.com
 //----------------------------------------------------------------------------------------
 // TODO: - Add Font-Color (Green=ON, Orange=OFF, Red=ERROR)
@@ -39,6 +39,7 @@ const VPNProtector = new Lang.Class({
         this.parent(0.0, "VPN Protector", false);
         
         this.PROTECTION_STATE = new St.Label({
+            style_class: 'vp-label',
             text: _(PROTECTION_OFF),
             y_align: Clutter.ActorAlign.CENTER});
 
@@ -81,6 +82,7 @@ const VPNProtector = new Lang.Class({
         }//end if timeout
 
         this._timeout = Mainloop.timeout_add_seconds(3, Lang.bind(this, this._update));
+        
     },//end _update
 
     // Update the text
@@ -124,7 +126,7 @@ const VPNProtector = new Lang.Class({
         //Extract ethernet device name
         var [resm, out]= GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show"], null, GLib.SpawnFlags.SEARCH_PATH, null);
         var devName = out.toString()
-        devName = devName.substring(devName.indexOf("ethernet") + 8 , devName.indexOf("ethernet") + 8 + 10)
+        devName = devName.substring(devName.indexOf("ethernet") + 8 , devName.indexOf("ethernet") + 8 + 20)
         devName = devName.match("[a-z0-9]+")
         
         if (devName == null) {
