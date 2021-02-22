@@ -1,7 +1,7 @@
 #!/usr/bin/gjs
 //----------------------------------------------------------------------------------------
-// Date    : 210221
-// Version : 1.1
+// Date    : 210222
+// Version : 1.1.1
 // Contact : rsdevelop.contact@gmail.com
 //----------------------------------------------------------------------------------------
 // TODO: - Add Font-Color (Green=ON, Orange=OFF, Red=ERROR)
@@ -39,7 +39,6 @@ const VPNProtector = new Lang.Class({
         this.parent(0.0, "VPN Protector", false);
         
         this.PROTECTION_STATE = new St.Label({
-            style_class: 'vp-label',
             text: _(PROTECTION_OFF),
             y_align: Clutter.ActorAlign.CENTER});
 
