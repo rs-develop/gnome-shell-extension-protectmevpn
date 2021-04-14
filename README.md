@@ -16,6 +16,6 @@ Rename the folder with the extension files into `ProtectMeVPN@TP`
 Press `ALT+F2` enter `r` for restart, hit return.
 
 5. Activate the extensions. 
-Open the Tweaks application and go to Extensions menue. Enable Protectmevpn.
+Open the Tweaks application and go to Extensions menu. Enable Protectmevpn.
 
 6. Enjoy
