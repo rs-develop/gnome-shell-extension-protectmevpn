@@ -1,7 +1,7 @@
 #!/usr/bin/gjs
 //----------------------------------------------------------------------------------------
-// Date    : 210222
-// Version : 1.1.1
+// Date    : 210414
+// Version : 1.2
 // Contact : rsdevelop.contact@gmail.com
 //----------------------------------------------------------------------------------------
 // TODO: - Add Font-Color (Green=ON, Orange=OFF, Red=ERROR)
@@ -117,8 +117,14 @@ const VPNProtector = new Lang.Class({
 
     //Checks if a vpn is active
     _isVPNActive: function() {
-        var [res, out] = GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show --active | grep vpn"], null, GLib.SpawnFlags.SEARCH_PATH, null);
-        return out;
+        // for open vpn
+        var [res, vpn] = GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show --active | grep vpn"], null, GLib.SpawnFlags.SEARCH_PATH, null);
+        if (vpn.length > 0)
+            return vpn
+        else {
+            var [res, tun] = GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show --active | grep tun"], null, GLib.SpawnFlags.SEARCH_PATH, null);
+            return tun
+        }
     },//end _isVPNActive
 
     _getWiredDevName: function() {
@@ -136,7 +142,11 @@ const VPNProtector = new Lang.Class({
             return devName.toString();
         }//end else
 
-    }//end _getWiredDevName
+    },//end _getWiredDevName
+
+    _debugPrint: function(dataSrc) {
+        global.log(dataSrc)
+    }//end _debugPrint
 
 });// end class VPNProtector
 
