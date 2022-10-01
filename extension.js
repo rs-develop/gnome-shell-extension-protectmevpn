@@ -123,7 +123,12 @@ const VPNProtector = new Lang.Class({
             return vpn
         else {
             var [res, tun] = GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show --active | grep tun"], null, GLib.SpawnFlags.SEARCH_PATH, null);
-            return tun
+            if (tun.length > 0)
+                return tun
+            else {
+                var [res, wg] = GLib.spawn_sync(null, ["/bin/bash", "-c", "nmcli con show --active | grep wg"], null, GLib.SpawnFlags.SEARCH_PATH, null);
+                return wg
+            }
         }
     },//end _isVPNActive
 
