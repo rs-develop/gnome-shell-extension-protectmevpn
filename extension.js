@@ -166,7 +166,7 @@ function enable() {
 }
 
 function disable() {
-    protector.distroy();
+    protector = null;
 }
 
 //----------------------------------------------------------------------------------------
